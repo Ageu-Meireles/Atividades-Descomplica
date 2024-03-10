@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Prática</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-secondary">
+    <header class="bg-dark text-light p-3">
+        <div class="container">
+            <h2>Funcionários</h2>
+        </div>
+    </header>
+    <main>
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-11">
+                    <div class="card">
+                        <div id="d-flex">
+                            <button type="button" class="btn btn-primary ms-3 mt-3" data-bs-toggle="modal"
+                                data-bs-target="#addEmployeeModal">
+                                Cadastrar funcionário
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive p-4">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" class="bg-secondary text-center text-white">Funcionários comuns</th>
+                                        </tr>
+                                    </thead>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>idade</th>
+                                            <th>Cargo</th>
+                                            <th>Apresentação</th>
+                                            <th>Função</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="funcionariosTable">
+                                        <tr>
+                                            <td colspan="7">Não há funcionários</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="7" class="bg-secondary text-center text-white">Gerentes</th>
+                                        </tr>
+                                    </thead>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>idade</th>
+                                            <th>Cargo</th>
+                                            <th>Departamento</th>
+                                            <th>Apresentação</th>
+                                            <th>Função</th>
+                                            <th>Atua</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="gerentesTable">
+                                        <tr>
+                                            <td colspan="7">Não há funcionários</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="7" class="bg-secondary text-center text-white">Desenvolvedores</th>
+                                        </tr>
+                                    </thead>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>idade</th>
+                                            <th>Cargo</th>
+                                            <th>Linguagem</th>
+                                            <th>Apresentação</th>
+                                            <th>Função</th>
+                                            <th>Atua</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="desenvolvedoresTable">
+                                        <tr>
+                                            <td colspan="7">Não há funcionários</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div id="container">
+            </div>
+        </section>
+    </main>
+    <div id="float-elements">
+        <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form onsubmit="cadastrarFuncionario(event)">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="addEmployeeModalLabel">Cadastro de Funcionário</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="cadastro">
+                                <fieldset id="formCadastro">
+                                    <div class="input-group my-3">
+                                        <label class="input-group-text" for="tipo">Tipo:</label>
+                                        <select name="tipo" id="tipo" class="form-control">
+                                            <option value="funcionario">Funcionário comum</option>
+                                            <option value="gerente">Gerente</option>
+                                            <option value="desenvolvedor">Desenvolvedor</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group my-3">
+                                        <label class="input-group-text" for="nome">Nome:</label>
+                                        <input type="text" name="nome" id="nome" class="form-control">
+                                    </div>
+                                    <div class="input-group my-3">
+                                        <label class="input-group-text" for="idade">Idade:</label>
+                                        <input type="number" name="idade" id="idade" class="form-control">
+                                    </div>
+                                    <div class="input-group my-3">
+                                        <label class="input-group-text" for="cargo">Cargo:</label>
+                                        <input type="text" name="cargo" id="cargo" class="form-control">
+                                    </div>
+                                    <div class="input-group my-3" id="departamentoWrapper">
+                                        <label class="input-group-text" for="departamento">Departamento:</label>
+                                        <input type="text" name="departamento" id="departamento" class="form-control">
+                                    </div>
+                                    <div class="input-group my-3" id="linguagemWrapper">
+                                        <label class="input-group-text" for="linguagem">Linguagem:</label>
+                                        <input type="text" name="linguagem" id="linguagem" class="form-control">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Cadastrar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="toast-container" class="toast-container bottom-0 end-0 p-3">
+        </div>
+    </div>
+    <footer class="bg-dark text-light text-center mt-4 py-3 fixed-bottom">
+        <div class="container">
+            <p>Prática de Classes, Herança e Exceções em JavaScript + GitHub Pages</p>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
